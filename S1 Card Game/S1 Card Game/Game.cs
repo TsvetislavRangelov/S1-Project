@@ -40,10 +40,10 @@ namespace S1_Card_Game
                 cards.Add(newCard);
             }
             return cards;
-           
-            
+        }
 
-            
+        public void DealCards()
+        {
 
         }
     }

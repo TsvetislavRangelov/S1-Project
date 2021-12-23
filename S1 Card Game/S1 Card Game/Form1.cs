@@ -33,5 +33,27 @@ namespace S1_Card_Game
                 btnCreateCards.Enabled = false;
             }
         }
+
+        private void btnCreatePlayer_Click(object sender, EventArgs e)
+        {
+            if(tbxPlayerLeft.Text != "" && tbxPlayerRight.Text != "")
+            {
+                Player playerLeft = new Player(tbxPlayerLeft.Text);
+                Player playerRight = new Player(tbxPlayerRight.Text);
+
+                lblPlayerLeft.Text = playerLeft.name;
+                lblPlayerRight.Text = playerRight.name;
+            }
+            
+            if(tbxPlayerLeft.Text == "" || tbxPlayerRight.Text == "")
+            {
+                MessageBox.Show("Please, specifiy a player name.");
+            }
+        }
+
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
     }
 }

@@ -48,6 +48,8 @@ namespace S1_Card_Game
             this.tbxPlayerRight = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.lblPlayerLeft = new System.Windows.Forms.Label();
+            this.lblPlayerRight = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbxCards
@@ -120,12 +122,13 @@ namespace S1_Card_Game
             this.btnCreatePlayer.Name = "btnCreatePlayer";
             this.btnCreatePlayer.Size = new System.Drawing.Size(110, 27);
             this.btnCreatePlayer.TabIndex = 7;
-            this.btnCreatePlayer.Text = "Create Player";
+            this.btnCreatePlayer.Text = "Create Players";
             this.btnCreatePlayer.UseVisualStyleBackColor = true;
+            this.btnCreatePlayer.Click += new System.EventHandler(this.btnCreatePlayer_Click);
             // 
             // btnDeal
             // 
-            this.btnDeal.Location = new System.Drawing.Point(272, 200);
+            this.btnDeal.Location = new System.Drawing.Point(272, 178);
             this.btnDeal.Name = "btnDeal";
             this.btnDeal.Size = new System.Drawing.Size(110, 27);
             this.btnDeal.TabIndex = 8;
@@ -176,6 +179,7 @@ namespace S1_Card_Game
             this.btnQuit.TabIndex = 13;
             this.btnQuit.Text = "Quit";
             this.btnQuit.UseVisualStyleBackColor = true;
+            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
             // 
             // btnPlay
             // 
@@ -218,11 +222,29 @@ namespace S1_Card_Game
             this.label7.TabIndex = 18;
             this.label7.Text = "Name:";
             // 
+            // lblPlayerLeft
+            // 
+            this.lblPlayerLeft.AutoSize = true;
+            this.lblPlayerLeft.Location = new System.Drawing.Point(237, 220);
+            this.lblPlayerLeft.Name = "lblPlayerLeft";
+            this.lblPlayerLeft.Size = new System.Drawing.Size(0, 15);
+            this.lblPlayerLeft.TabIndex = 19;
+            // 
+            // lblPlayerRight
+            // 
+            this.lblPlayerRight.AutoSize = true;
+            this.lblPlayerRight.Location = new System.Drawing.Point(431, 220);
+            this.lblPlayerRight.Name = "lblPlayerRight";
+            this.lblPlayerRight.Size = new System.Drawing.Size(0, 15);
+            this.lblPlayerRight.TabIndex = 20;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(860, 450);
+            this.Controls.Add(this.lblPlayerRight);
+            this.Controls.Add(this.lblPlayerLeft);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tbxPlayerRight);
@@ -270,6 +292,8 @@ namespace S1_Card_Game
         private System.Windows.Forms.TextBox tbxPlayerRight;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblPlayerLeft;
+        private System.Windows.Forms.Label lblPlayerRight;
     }
 }
 
