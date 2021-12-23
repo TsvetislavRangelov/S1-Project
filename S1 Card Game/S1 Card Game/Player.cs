@@ -16,6 +16,8 @@ namespace S1_Card_Game
         public Player(string name)
         {
             this.name = name;
+            this.cards = new List<Card>();
+            this.selectedCard = null;
         }  
     }
 }

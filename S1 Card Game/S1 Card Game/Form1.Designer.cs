@@ -67,6 +67,7 @@ namespace S1_Card_Game
             this.btnCreateCards.TabIndex = 1;
             this.btnCreateCards.Text = "Create Cards";
             this.btnCreateCards.UseVisualStyleBackColor = true;
+            this.btnCreateCards.Click += new System.EventHandler(this.btnCreateCards_Click);
             // 
             // label1
             // 
