@@ -42,9 +42,30 @@ namespace S1_Card_Game
             return cards;
         }
 
-        public void DealCards()
+        public void DealPlayerLeft(Player playerLeft)
         {
+            Random index = new Random();
 
+            int dealerIndex = index.Next(CreateCards().Count);
+
+            for(int i = 0; i < 5; i++)
+            {
+                playerLeft.cards.Add(CreateCards()[dealerIndex]);
+                cards.RemoveAt(dealerIndex);
+            }
+        }
+
+        public void DealPlayerRight(Player playerRight)
+        {
+            Random index = new Random();
+
+            int dealerIndex = index.Next(CreateCards().Count);
+
+            for(int i = 0; i < 5; i++)
+            {
+                playerRight.cards.Add(CreateCards()[dealerIndex]);
+                cards.RemoveAt(dealerIndex);
+            }
         }
     }
 }
