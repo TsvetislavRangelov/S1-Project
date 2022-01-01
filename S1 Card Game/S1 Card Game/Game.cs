@@ -12,6 +12,13 @@ namespace S1_Card_Game
         public Player playerLeft { get; private set; }
         public Player playerRight { get; private set; }
 
+        //constuctor is for creating the objects of the players from the game
+        //I'm using the player class to modify their names from the form with a Set method
+        public Game()
+        {
+            this.playerLeft = new Player("");
+            this.playerRight = new Player("");
+        }
 
         //change the return type of this function in the UML diagram.
         public List<Card> CreateCards()
@@ -19,53 +26,26 @@ namespace S1_Card_Game
             Random rand = new Random();
             this.cards = new List<Card>();
 
-            for(int k = 0; k < 5; k++)
+            for(int k = 0; k < 10; k++)
             {
                 int randomNumber = rand.Next(1, 10);
-                Card newCard = new Card(randomNumber, "Clubs♣");
-                cards.Add(newCard);
-            }
-
-            for(int j = 0; j < 3; j++)
-            {
-                int randomNumber = rand.Next(1, 10);
-                Card newCard = new Card(randomNumber, "Hearts♥");
-                cards.Add(newCard);
-            }
-            
-            for(int i = 0; i < 2; i++)
-            {
-                int randomNumber = rand.Next(1, 10);
-                Card newCard = new Card(randomNumber, "Spades♠");
+                Card newCard = new Card(randomNumber, "Spades");
                 cards.Add(newCard);
             }
             return cards;
         }
 
-        public void DealPlayerLeft(Player playerLeft)
+        public void DealCards()
         {
-            Random index = new Random();
+            Random randomIndex = new Random();
 
-            int dealerIndex = index.Next(CreateCards().Count);
-
-            for(int i = 0; i < 5; i++)
+            foreach(var card in cards)
             {
-                playerLeft.cards.Add(CreateCards()[dealerIndex]);
-                cards.RemoveAt(dealerIndex);
+                playerLeft.cards.Add(card);
+                playerRight.cards.Add(card);
             }
-        }
 
-        public void DealPlayerRight(Player playerRight)
-        {
-            Random index = new Random();
 
-            int dealerIndex = index.Next(CreateCards().Count);
-
-            for(int i = 0; i < 5; i++)
-            {
-                playerRight.cards.Add(CreateCards()[dealerIndex]);
-                cards.RemoveAt(dealerIndex);
-            }
         }
     }
 }

@@ -7,33 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace S1_Card_Game
 {
     public partial class Form1 : Form
     {
         Game currentGame = new Game();
-
+        
 
         public Form1()
         {
+            
             InitializeComponent();
-            Player playerLeft = new Player(tbxPlayerLeft.Text);
-            Player playerRight = new Player(tbxPlayerRight.Text);
+            
         }
 
         private void btnCreateCards_Click(object sender, EventArgs e)
         {
-            
-            foreach(var card in currentGame.CreateCards())
+            foreach (var card in currentGame.CreateCards())
             {
                 lbxCards.Items.Add(card.number + $" {card.suit}");
-            }
-
-            //disabling the button if cards exceed 20 
-            if(lbxCards.Items.Count >= 20)
-            {
-                btnCreateCards.Enabled = false;
             }
         }
 
@@ -41,11 +35,12 @@ namespace S1_Card_Game
         {
             if(tbxPlayerLeft.Text != "" && tbxPlayerRight.Text != "")
             {
-                Player playerLeft = new Player(tbxPlayerLeft.Text);
-                Player playerRight = new Player(tbxPlayerRight.Text);
+                currentGame.playerLeft.SetName(tbxPlayerLeft.Text);
+                currentGame.playerRight.SetName(tbxPlayerRight.Text);
 
-                lblPlayerLeft.Text = playerLeft.name;
-                lblPlayerRight.Text = playerRight.name;
+                lblPlayerLeft.Text = currentGame.playerLeft.name;
+                lblPlayerRight.Text = currentGame.playerRight.name;
+                
             }
             
             if(tbxPlayerLeft.Text == "" || tbxPlayerRight.Text == "")
@@ -64,26 +59,17 @@ namespace S1_Card_Game
 
         private void btnDeal_Click(object sender, EventArgs e)
         {
-            Player playerLeft = new Player(tbxPlayerLeft.Text);
-            Player playerRight = new Player(lblPlayerRight.Text);
-            currentGame.DealPlayerLeft(playerLeft);
-            currentGame.DealPlayerLeft(playerRight);
+            currentGame.DealCards();
 
-            foreach(var card in playerLeft.cards)
+            foreach(var card in currentGame.playerLeft.cards)
             {
                 lbxPlayerLeft.Items.Add(card.number + $"{card.suit}");
-                lbxCards.Items.Remove(card.number + $"{card.suit}");
-                currentGame.cards.Remove(card);
             }
 
-            foreach(var card in playerRight.cards)
+            foreach(var card in currentGame.playerRight.cards)
             {
                 lbxPlayerRight.Items.Add(card.number + $"{card.suit}");
-                lbxCards.Items.Remove(card.number + $"{card.suit}");
-                currentGame.cards.Remove(card);  
             }
-
-            
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -101,6 +87,8 @@ namespace S1_Card_Game
             lblPlayerLeft.Text = "";
 
             currentGame.cards.Clear();
+
+            
             
 
         }

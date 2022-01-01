@@ -19,5 +19,10 @@ namespace S1_Card_Game
             this.cards = new List<Card>();
             this.selectedCard = null;
         }  
+
+        public void SetName(string name)
+        {
+            this.name = name;
+        }
     }
 }
