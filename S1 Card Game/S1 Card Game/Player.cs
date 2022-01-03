@@ -17,12 +17,17 @@ namespace S1_Card_Game
         {
             this.name = name;
             this.cards = new List<Card>();
-            this.selectedCard = null;
+            
         }  
 
         public void SetName(string name)
         {
             this.name = name;
+        }
+
+        public void SetSelectedCard(Card selectedCard)
+        {
+            this.selectedCard = selectedCard;
         }
     }
 }

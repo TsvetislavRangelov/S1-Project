@@ -55,17 +55,19 @@ namespace S1_Card_Game
             // lbxCards
             // 
             this.lbxCards.FormattingEnabled = true;
-            this.lbxCards.ItemHeight = 15;
-            this.lbxCards.Location = new System.Drawing.Point(12, 91);
+            this.lbxCards.ItemHeight = 20;
+            this.lbxCards.Location = new System.Drawing.Point(14, 121);
+            this.lbxCards.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lbxCards.Name = "lbxCards";
-            this.lbxCards.Size = new System.Drawing.Size(201, 244);
+            this.lbxCards.Size = new System.Drawing.Size(229, 324);
             this.lbxCards.TabIndex = 0;
             // 
             // btnCreateCards
             // 
-            this.btnCreateCards.Location = new System.Drawing.Point(13, 55);
+            this.btnCreateCards.Location = new System.Drawing.Point(15, 73);
+            this.btnCreateCards.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCreateCards.Name = "btnCreateCards";
-            this.btnCreateCards.Size = new System.Drawing.Size(110, 27);
+            this.btnCreateCards.Size = new System.Drawing.Size(126, 36);
             this.btnCreateCards.TabIndex = 1;
             this.btnCreateCards.Text = "Create Cards";
             this.btnCreateCards.UseVisualStyleBackColor = true;
@@ -74,53 +76,54 @@ namespace S1_Card_Game
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 34);
+            this.label1.Location = new System.Drawing.Point(15, 45);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 15);
+            this.label1.Size = new System.Drawing.Size(46, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Cards";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(272, 34);
+            this.label2.Location = new System.Drawing.Point(311, 45);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 15);
+            this.label2.Size = new System.Drawing.Size(55, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "Players";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(287, 67);
+            this.label3.Location = new System.Drawing.Point(328, 89);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 15);
+            this.label3.Size = new System.Drawing.Size(78, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "Player Left";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(469, 67);
+            this.label4.Location = new System.Drawing.Point(536, 89);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 15);
+            this.label4.Size = new System.Drawing.Size(88, 20);
             this.label4.TabIndex = 5;
             this.label4.Text = "Player Right";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(647, 34);
+            this.label5.Location = new System.Drawing.Point(739, 45);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 15);
+            this.label5.Size = new System.Drawing.Size(48, 20);
             this.label5.TabIndex = 6;
             this.label5.Text = "Game";
             // 
             // btnCreatePlayer
             // 
-            this.btnCreatePlayer.Location = new System.Drawing.Point(272, 145);
+            this.btnCreatePlayer.Location = new System.Drawing.Point(311, 193);
+            this.btnCreatePlayer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCreatePlayer.Name = "btnCreatePlayer";
-            this.btnCreatePlayer.Size = new System.Drawing.Size(110, 27);
+            this.btnCreatePlayer.Size = new System.Drawing.Size(126, 36);
             this.btnCreatePlayer.TabIndex = 7;
             this.btnCreatePlayer.Text = "Create Players";
             this.btnCreatePlayer.UseVisualStyleBackColor = true;
@@ -128,9 +131,10 @@ namespace S1_Card_Game
             // 
             // btnDeal
             // 
-            this.btnDeal.Location = new System.Drawing.Point(272, 178);
+            this.btnDeal.Location = new System.Drawing.Point(311, 237);
+            this.btnDeal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDeal.Name = "btnDeal";
-            this.btnDeal.Size = new System.Drawing.Size(110, 27);
+            this.btnDeal.Size = new System.Drawing.Size(126, 36);
             this.btnDeal.TabIndex = 8;
             this.btnDeal.Text = "Deal Cards";
             this.btnDeal.UseVisualStyleBackColor = true;
@@ -139,35 +143,39 @@ namespace S1_Card_Game
             // lbxPlayerLeft
             // 
             this.lbxPlayerLeft.FormattingEnabled = true;
-            this.lbxPlayerLeft.ItemHeight = 15;
-            this.lbxPlayerLeft.Location = new System.Drawing.Point(237, 241);
+            this.lbxPlayerLeft.ItemHeight = 20;
+            this.lbxPlayerLeft.Location = new System.Drawing.Point(271, 321);
+            this.lbxPlayerLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lbxPlayerLeft.Name = "lbxPlayerLeft";
-            this.lbxPlayerLeft.Size = new System.Drawing.Size(188, 94);
+            this.lbxPlayerLeft.Size = new System.Drawing.Size(214, 124);
             this.lbxPlayerLeft.TabIndex = 9;
             // 
             // lbxPlayerRight
             // 
             this.lbxPlayerRight.FormattingEnabled = true;
-            this.lbxPlayerRight.ItemHeight = 15;
-            this.lbxPlayerRight.Location = new System.Drawing.Point(431, 241);
+            this.lbxPlayerRight.ItemHeight = 20;
+            this.lbxPlayerRight.Location = new System.Drawing.Point(493, 321);
+            this.lbxPlayerRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lbxPlayerRight.Name = "lbxPlayerRight";
-            this.lbxPlayerRight.Size = new System.Drawing.Size(188, 94);
+            this.lbxPlayerRight.Size = new System.Drawing.Size(214, 124);
             this.lbxPlayerRight.TabIndex = 10;
             // 
             // lbxGame
             // 
             this.lbxGame.FormattingEnabled = true;
-            this.lbxGame.ItemHeight = 15;
-            this.lbxGame.Location = new System.Drawing.Point(647, 91);
+            this.lbxGame.ItemHeight = 20;
+            this.lbxGame.Location = new System.Drawing.Point(739, 121);
+            this.lbxGame.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lbxGame.Name = "lbxGame";
-            this.lbxGame.Size = new System.Drawing.Size(201, 244);
+            this.lbxGame.Size = new System.Drawing.Size(229, 324);
             this.lbxGame.TabIndex = 11;
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(738, 341);
+            this.btnReset.Location = new System.Drawing.Point(843, 455);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(110, 27);
+            this.btnReset.Size = new System.Drawing.Size(126, 36);
             this.btnReset.TabIndex = 12;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
@@ -175,9 +183,10 @@ namespace S1_Card_Game
             // 
             // btnQuit
             // 
-            this.btnQuit.Location = new System.Drawing.Point(738, 411);
+            this.btnQuit.Location = new System.Drawing.Point(843, 548);
+            this.btnQuit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(110, 27);
+            this.btnQuit.Size = new System.Drawing.Size(126, 36);
             this.btnQuit.TabIndex = 13;
             this.btnQuit.Text = "Quit";
             this.btnQuit.UseVisualStyleBackColor = true;
@@ -185,66 +194,70 @@ namespace S1_Card_Game
             // 
             // btnPlay
             // 
-            this.btnPlay.Location = new System.Drawing.Point(509, 341);
+            this.btnPlay.Location = new System.Drawing.Point(582, 455);
+            this.btnPlay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(110, 27);
+            this.btnPlay.Size = new System.Drawing.Size(126, 36);
             this.btnPlay.TabIndex = 14;
             this.btnPlay.Text = "Play";
             this.btnPlay.UseVisualStyleBackColor = true;
+            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
             // 
             // tbxPlayerLeft
             // 
-            this.tbxPlayerLeft.Location = new System.Drawing.Point(272, 107);
+            this.tbxPlayerLeft.Location = new System.Drawing.Point(311, 143);
+            this.tbxPlayerLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbxPlayerLeft.Name = "tbxPlayerLeft";
-            this.tbxPlayerLeft.Size = new System.Drawing.Size(100, 23);
+            this.tbxPlayerLeft.Size = new System.Drawing.Size(114, 27);
             this.tbxPlayerLeft.TabIndex = 15;
             // 
             // tbxPlayerRight
             // 
-            this.tbxPlayerRight.Location = new System.Drawing.Point(469, 107);
+            this.tbxPlayerRight.Location = new System.Drawing.Point(536, 143);
+            this.tbxPlayerRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbxPlayerRight.Name = "tbxPlayerRight";
-            this.tbxPlayerRight.Size = new System.Drawing.Size(100, 23);
+            this.tbxPlayerRight.Size = new System.Drawing.Size(114, 27);
             this.tbxPlayerRight.TabIndex = 16;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(219, 110);
+            this.label6.Location = new System.Drawing.Point(250, 147);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 15);
+            this.label6.Size = new System.Drawing.Size(52, 20);
             this.label6.TabIndex = 17;
             this.label6.Text = "Name:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(409, 110);
+            this.label7.Location = new System.Drawing.Point(467, 147);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 15);
+            this.label7.Size = new System.Drawing.Size(52, 20);
             this.label7.TabIndex = 18;
             this.label7.Text = "Name:";
             // 
             // lblPlayerLeft
             // 
             this.lblPlayerLeft.AutoSize = true;
-            this.lblPlayerLeft.Location = new System.Drawing.Point(237, 220);
+            this.lblPlayerLeft.Location = new System.Drawing.Point(271, 293);
             this.lblPlayerLeft.Name = "lblPlayerLeft";
-            this.lblPlayerLeft.Size = new System.Drawing.Size(0, 15);
+            this.lblPlayerLeft.Size = new System.Drawing.Size(0, 20);
             this.lblPlayerLeft.TabIndex = 19;
             // 
             // lblPlayerRight
             // 
             this.lblPlayerRight.AutoSize = true;
-            this.lblPlayerRight.Location = new System.Drawing.Point(431, 220);
+            this.lblPlayerRight.Location = new System.Drawing.Point(493, 293);
             this.lblPlayerRight.Name = "lblPlayerRight";
-            this.lblPlayerRight.Size = new System.Drawing.Size(0, 15);
+            this.lblPlayerRight.Size = new System.Drawing.Size(0, 20);
             this.lblPlayerRight.TabIndex = 20;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(860, 450);
+            this.ClientSize = new System.Drawing.Size(983, 600);
             this.Controls.Add(this.lblPlayerRight);
             this.Controls.Add(this.lblPlayerLeft);
             this.Controls.Add(this.label7);
@@ -266,6 +279,7 @@ namespace S1_Card_Game
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCreateCards);
             this.Controls.Add(this.lbxCards);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);

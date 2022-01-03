@@ -12,10 +12,14 @@ namespace S1_Card_Game
         public Player playerLeft { get; private set; }
         public Player playerRight { get; private set; }
 
-        //constuctor is for creating the objects of the players from the game
-        //I'm using the player class to modify their names from the form with a Set method
+        //default constructor overload is for creating
+        //the objects of the players from the form.
+        //I'm using the player class to modify their
+        //names from the form with a Set function.
         public Game()
         {
+            
+            this.cards = new List<Card>();
             this.playerLeft = new Player("");
             this.playerRight = new Player("");
         }
@@ -39,13 +43,42 @@ namespace S1_Card_Game
         {
             Random randomIndex = new Random();
 
-            foreach(var card in cards)
+            for(int i = 0; i < cards.Count; i++)
             {
-                playerLeft.cards.Add(card);
-                playerRight.cards.Add(card);
+                int indexer = randomIndex.Next(cards.Count);
+                playerRight.cards.Add(cards.ElementAt(indexer));
+                cards.RemoveAt(indexer);
             }
 
+            Random scndRandomIndex = new Random();
 
+            for (int k = 0; k < cards.Count + 5; k++)
+            {
+                int secondIndexer = scndRandomIndex.Next(cards.Count);
+                playerLeft.cards.Add(cards.ElementAt(secondIndexer));
+                cards.RemoveAt(secondIndexer);
+            }
+        }
+
+        public Player Play()
+        {
+            
+            Player draw = new Player("draw");
+            if(playerRight.selectedCard.number > playerLeft.selectedCard.number)
+            {
+                return playerRight;
+            }
+
+            else if(playerLeft.selectedCard.number > playerRight.selectedCard.number)
+            {
+                return playerLeft;
+            }
+
+            else
+            {
+                return draw;
+            }
+             
         }
     }
 }

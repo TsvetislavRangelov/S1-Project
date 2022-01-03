@@ -15,9 +15,11 @@ namespace S1_Card_Game
     {
         Game currentGame = new Game();
         
+        
 
         public Form1()
         {
+            
             
             InitializeComponent();
             
@@ -59,16 +61,33 @@ namespace S1_Card_Game
 
         private void btnDeal_Click(object sender, EventArgs e)
         {
-            currentGame.DealCards();
-
-            foreach(var card in currentGame.playerLeft.cards)
+            try
             {
-                lbxPlayerLeft.Items.Add(card.number + $"{card.suit}");
+                if (currentGame.cards.Count <= 0)
+                {
+                    MessageBox.Show("Please, create cards before dealing.");
+                }
+                else
+                {
+                    currentGame.DealCards();
+
+                    foreach (var card in currentGame.playerLeft.cards)
+                    {
+                        lbxPlayerLeft.Items.Add(card.number + $"{card.suit}");
+                        lbxCards.Items.Remove(card);
+                    }
+
+                    foreach (var card in currentGame.playerRight.cards)
+                    {
+                        lbxPlayerRight.Items.Add(card.number + $"{card.suit}");
+                        lbxCards.Items.Remove(card);
+                    }
+
+                }       
             }
-
-            foreach(var card in currentGame.playerRight.cards)
+            catch (System.NullReferenceException)
             {
-                lbxPlayerRight.Items.Add(card.number + $"{card.suit}");
+                MessageBox.Show("Please, create the cards before dealing them.");
             }
         }
 
@@ -85,12 +104,41 @@ namespace S1_Card_Game
             lbxGame.Items.Clear();
             lblPlayerRight.Text = "";
             lblPlayerLeft.Text = "";
+            
+            currentGame.cards.Clear();
+            currentGame.playerLeft.cards.Clear();
+            currentGame.playerRight.cards.Clear();
 
             currentGame.cards.Clear();
 
             
             
 
+        }
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            int rightScore = 0;
+            int leftScore = 0;
+            Card rightSelected = currentGame.playerRight.selectedCard;
+            Card leftSelected = currentGame.playerLeft.selectedCard;
+
+            lbxPlayerRight.SelectedItem = rightSelected;
+            lbxPlayerLeft.SelectedItem = leftSelected;
+
+            if(currentGame.Play() == currentGame.playerRight && rightSelected.number >= leftSelected.number)
+            {
+                lbxGame.Items.Add($"{currentGame.playerRight.name} {rightScore++} - {currentGame.playerLeft.name} {leftScore}");
+                
+            }
+            else if(currentGame.Play() == currentGame.playerLeft && leftSelected.number >= rightSelected.number)
+            {
+                lbxGame.Items.Add($"{currentGame.playerRight.name} {rightScore} - {currentGame.playerLeft.name} {leftScore++}");
+            }
+            else
+            {
+                lbxGame.Items.Add($"{currentGame.playerRight.name} {rightScore} - {currentGame.playerLeft.name} {leftScore}");
+            }
         }
     }
 }
