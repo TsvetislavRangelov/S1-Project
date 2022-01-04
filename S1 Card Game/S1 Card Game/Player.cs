@@ -17,7 +17,7 @@ namespace S1_Card_Game
         {
             this.name = name;
             this.cards = new List<Card>();
-            
+            this.selectedCard = new Card(1, "Spades");
         }  
 
         public void SetName(string name)

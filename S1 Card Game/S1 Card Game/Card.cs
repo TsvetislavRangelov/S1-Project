@@ -16,5 +16,15 @@ namespace S1_Card_Game
             this.number = number;
             this.suit = suit;
         }
+
+        public void SetNumber(int number)
+        {
+            this.number = number;
+        }
+
+        public void SetSuit(string suit)
+        {
+            this.suit = suit;
+        }
     }
 }

@@ -67,6 +67,11 @@ namespace S1_Card_Game
                 {
                     MessageBox.Show("Please, create cards before dealing.");
                 }
+
+                else if(lblPlayerLeft.Text == "" || lblPlayerLeft.Text == "")
+                {
+                    MessageBox.Show("Please, create the players before dealing.");
+                }
                 else
                 {
                     currentGame.DealCards();
@@ -110,35 +115,51 @@ namespace S1_Card_Game
             currentGame.playerRight.cards.Clear();
 
             currentGame.cards.Clear();
-
-            
-            
-
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
             int rightScore = 0;
             int leftScore = 0;
-            Card rightSelected = currentGame.playerRight.selectedCard;
-            Card leftSelected = currentGame.playerLeft.selectedCard;
+            ListBox.SelectedObjectCollection rightSelectedItem = new ListBox.SelectedObjectCollection(lbxPlayerRight);
 
-            lbxPlayerRight.SelectedItem = rightSelected;
-            lbxPlayerLeft.SelectedItem = leftSelected;
-
-            if(currentGame.Play() == currentGame.playerRight && rightSelected.number >= leftSelected.number)
+            if(rightSelectedItem.Count > 0)
             {
-                lbxGame.Items.Add($"{currentGame.playerRight.name} {rightScore++} - {currentGame.playerLeft.name} {leftScore}");
+                Card rightSelectedCard = new Card(1, "Spades");
+
+                rightSelectedCard.SetNumber(Convert.ToInt32(lbxPlayerRight.SelectedValue));
+                rightSelectedCard.SetSuit(lbxPlayerRight.SelectedItem.ToString());
+                currentGame.playerRight.SetSelectedCard(rightSelectedCard);
+            }
+
+            ListBox.SelectedObjectCollection leftSelectedItem = new ListBox.SelectedObjectCollection(lbxPlayerLeft);
+            
+            if(leftSelectedItem.Count > 0)
+            {
+                Card leftSelectedCard = new Card(1, "Spades");
+
+                leftSelectedCard.SetNumber(Convert.ToInt32(lbxPlayerLeft.SelectedValue));
+                leftSelectedCard.SetSuit(lbxPlayerLeft.SelectedItem.ToString());
+                currentGame.playerLeft.SetSelectedCard(leftSelectedCard);
                 
             }
-            else if(currentGame.Play() == currentGame.playerLeft && leftSelected.number >= rightSelected.number)
+            //move the logic into the play function
+            if(currentGame.Play() == currentGame.playerLeft)
             {
-                lbxGame.Items.Add($"{currentGame.playerRight.name} {rightScore} - {currentGame.playerLeft.name} {leftScore++}");
+                lbxGame.Items.Add($"{currentGame.playerLeft.name} {leftScore++} - {leftScore} {currentGame.playerRight.name}");
             }
+
+            else if(currentGame.Play() == currentGame.playerLeft)
+            {
+                lbxGame.Items.Add($"{currentGame.playerLeft.name} {rightScore} - {leftScore++} {currentGame.playerRight.name}");
+            }
+
             else
             {
-                lbxGame.Items.Add($"{currentGame.playerRight.name} {rightScore} - {currentGame.playerLeft.name} {leftScore}");
+                lbxGame.Items.Add($"{currentGame.playerLeft.name} {rightScore} - {leftScore} {currentGame.playerRight.name}");
+                MessageBox.Show("The game was a draw");
             }
+
         }
     }
 }

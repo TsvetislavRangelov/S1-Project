@@ -32,7 +32,7 @@ namespace S1_Card_Game
 
             for(int k = 0; k < 10; k++)
             {
-                int randomNumber = rand.Next(1, 10);
+                int randomNumber = rand.Next(2, 11);
                 Card newCard = new Card(randomNumber, "Spades");
                 cards.Add(newCard);
             }
@@ -61,23 +61,22 @@ namespace S1_Card_Game
         }
 
         public Player Play()
-        {
+        { 
+            // use substrings here
             
-            Player draw = new Player("draw");
             if(playerRight.selectedCard.number > playerLeft.selectedCard.number)
             {
                 return playerRight;
             }
-
             else if(playerLeft.selectedCard.number > playerRight.selectedCard.number)
             {
                 return playerLeft;
             }
-
-            else
+            else if(playerLeft.selectedCard.number == playerRight.selectedCard.number)
             {
-                return draw;
+                return null;
             }
+            return null;
              
         }
     }
