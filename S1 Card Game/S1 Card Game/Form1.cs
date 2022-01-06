@@ -78,13 +78,13 @@ namespace S1_Card_Game
 
                     foreach (var card in currentGame.playerLeft.cards)
                     {
-                        lbxPlayerLeft.Items.Add(card.number + $"{card.suit}");
+                        lbxPlayerLeft.Items.Add(card.number + $" ,{card.suit}");
                         lbxCards.Items.Remove(card);
                     }
 
                     foreach (var card in currentGame.playerRight.cards)
                     {
-                        lbxPlayerRight.Items.Add(card.number + $"{card.suit}");
+                        lbxPlayerRight.Items.Add(card.number + $" ,{card.suit}");
                         lbxCards.Items.Remove(card);
                     }
 
@@ -119,47 +119,52 @@ namespace S1_Card_Game
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            int rightScore = 0;
-            int leftScore = 0;
+            string lSelected = lbxPlayerLeft.SelectedItem.ToString();
+            string lNumber = lSelected.Substring(0, lSelected.IndexOf(' '));
+
+            string rSelected = lbxPlayerRight.SelectedItem.ToString();
+            string rNumber = rSelected.Substring(0, rSelected.IndexOf(' '));
+            
             ListBox.SelectedObjectCollection rightSelectedItem = new ListBox.SelectedObjectCollection(lbxPlayerRight);
 
             if(rightSelectedItem.Count > 0)
             {
-                Card rightSelectedCard = new Card(1, "Spades");
-
-                rightSelectedCard.SetNumber(Convert.ToInt32(lbxPlayerRight.SelectedValue));
-                rightSelectedCard.SetSuit(lbxPlayerRight.SelectedItem.ToString());
-                currentGame.playerRight.SetSelectedCard(rightSelectedCard);
+                Card rSelectedCard = new Card(0, "");
+                rSelectedCard.SetNumber(Convert.ToInt32(rNumber));
+                currentGame.playerRight.SetSelectedCard(rSelectedCard);
             }
 
             ListBox.SelectedObjectCollection leftSelectedItem = new ListBox.SelectedObjectCollection(lbxPlayerLeft);
             
             if(leftSelectedItem.Count > 0)
             {
-                Card leftSelectedCard = new Card(1, "Spades");
-
-                leftSelectedCard.SetNumber(Convert.ToInt32(lbxPlayerLeft.SelectedValue));
-                leftSelectedCard.SetSuit(lbxPlayerLeft.SelectedItem.ToString());
-                currentGame.playerLeft.SetSelectedCard(leftSelectedCard);
-                
+                Card lSelectedCard = new Card(0, "");
+                lSelectedCard.SetNumber(Convert.ToInt32(lNumber));
+                currentGame.playerLeft.SetSelectedCard(lSelectedCard);
             }
-            //move the logic into the play function
-            if(currentGame.Play() == currentGame.playerLeft)
+            
+            //this should be a function in the game class, fix it later
+            if(currentGame.playerRight.selectedCard.number > currentGame.playerLeft.selectedCard.number)
             {
-                lbxGame.Items.Add($"{currentGame.playerLeft.name} {leftScore++} - {leftScore} {currentGame.playerRight.name}");
+                lbxGame.Items.Add(currentGame.playerRight.name);
+                lbxPlayerLeft.Items.Remove(lSelected);
+                lbxPlayerRight.Items.Remove(rSelected);
             }
 
-            else if(currentGame.Play() == currentGame.playerLeft)
+            else if(currentGame.playerRight.selectedCard.number < currentGame.playerLeft.selectedCard.number)
             {
-                lbxGame.Items.Add($"{currentGame.playerLeft.name} {rightScore} - {leftScore++} {currentGame.playerRight.name}");
+                lbxGame.Items.Add(currentGame.playerLeft.name);
+                lbxPlayerLeft.Items.Remove(lSelected);
+                lbxPlayerRight.Items.Remove(rSelected);
             }
 
             else
             {
-                lbxGame.Items.Add($"{currentGame.playerLeft.name} {rightScore} - {leftScore} {currentGame.playerRight.name}");
-                MessageBox.Show("The game was a draw");
+                lbxGame.Items.Add("Draw");
+                lbxPlayerLeft.Items.Remove(lSelected);
+                lbxPlayerRight.Items.Remove(rSelected);
             }
-
+            
         }
     }
 }

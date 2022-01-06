@@ -60,24 +60,6 @@ namespace S1_Card_Game
             }
         }
 
-        public Player Play()
-        { 
-            // use substrings here
-            
-            if(playerRight.selectedCard.number > playerLeft.selectedCard.number)
-            {
-                return playerRight;
-            }
-            else if(playerLeft.selectedCard.number > playerRight.selectedCard.number)
-            {
-                return playerLeft;
-            }
-            else if(playerLeft.selectedCard.number == playerRight.selectedCard.number)
-            {
-                return null;
-            }
-            return null;
-             
-        }
+      
     }
 }
