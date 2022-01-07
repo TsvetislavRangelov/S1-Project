@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace S1_Card_Game
 {
@@ -28,18 +29,39 @@ namespace S1_Card_Game
         public List<Card> CreateCards()
         {
             Random rand = new Random();
-            this.cards = new List<Card>();
+            
 
-            for(int k = 0; k < 10; k++)
+            for(int k = 0; k < 3; k++)
             {
                 int randomNumber = rand.Next(2, 11);
                 Card newCard = new Card(randomNumber, "Spades");
                 cards.Add(newCard);
             }
-            return cards;
+
+            for(int i = 0; i < 2; i++)
+            {
+                int randomNumber = rand.Next(2, 11);
+                Card newCard = new Card(randomNumber, "Hearts");
+                cards.Add(newCard);
+            }
+
+            for(int j = 0; j < 3; j++)
+            {
+                int randomNumber = rand.Next(2, 11);
+                Card newCard = new Card(randomNumber, "Clubs");
+                cards.Add(newCard);
+            }
+
+            for(int h = 0; h < 2; h++)
+            {
+                int randomNumber = rand.Next(2, 11);
+                Card newCard = new Card(randomNumber, "Diamonds");
+                cards.Add(newCard);
+            }
+            return this.cards;
         }
 
-        public void DealCards()
+        public void DealCards(ListBox lbx)
         {
             Random randomIndex = new Random();
 
@@ -47,19 +69,38 @@ namespace S1_Card_Game
             {
                 int indexer = randomIndex.Next(cards.Count);
                 playerRight.cards.Add(cards.ElementAt(indexer));
+                //I've set a listbox as a parameter in order to remove the elements
+                //that need to be removed from the function itself, not from
+                //the form control
+                lbx.Items.RemoveAt(indexer);
                 cards.RemoveAt(indexer);
             }
 
-            Random scndRandomIndex = new Random();
-
             for (int k = 0; k < cards.Count + 5; k++)
             {
-                int secondIndexer = scndRandomIndex.Next(cards.Count);
+                int secondIndexer = randomIndex.Next(cards.Count);
                 playerLeft.cards.Add(cards.ElementAt(secondIndexer));
+                lbx.Items.RemoveAt(secondIndexer);
                 cards.RemoveAt(secondIndexer);
             }
         }
 
-      
+        public Player Play()
+        {
+            if (playerRight.selectedCard.number > playerLeft.selectedCard.number)
+            {
+                return playerRight;
+            }
+            else if (playerRight.selectedCard.number < playerLeft.selectedCard.number)
+            {
+                return playerLeft;
+            }
+            else
+            {
+                return null;
+            }
+
+            
+        }
     }
 }

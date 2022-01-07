@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Reflection;
 
 namespace S1_Card_Game
 {
@@ -15,14 +14,25 @@ namespace S1_Card_Game
     {
         Game currentGame = new Game();
         
-        
-
         public Form1()
+        {    
+            InitializeComponent();   
+        }
+
+        public void ClearFields()
         {
-            
-            
-            InitializeComponent();
-            
+            lbxCards.Items.Clear();
+            lbxPlayerLeft.Items.Clear();
+            lbxPlayerRight.Items.Clear();
+            lbxGame.Items.Clear();
+            lblPlayerRight.Text = "";
+            lblPlayerLeft.Text = "";
+
+            currentGame.cards.Clear();
+            currentGame.playerLeft.cards.Clear();
+            currentGame.playerRight.cards.Clear();
+
+            currentGame.cards.Clear();
         }
 
         private void btnCreateCards_Click(object sender, EventArgs e)
@@ -74,20 +84,20 @@ namespace S1_Card_Game
                 }
                 else
                 {
-                    currentGame.DealCards();
+                    currentGame.DealCards(lbxCards);
 
                     foreach (var card in currentGame.playerLeft.cards)
                     {
                         lbxPlayerLeft.Items.Add(card.number + $" ,{card.suit}");
-                        lbxCards.Items.Remove(card);
+                        
+                        
                     }
 
                     foreach (var card in currentGame.playerRight.cards)
                     {
                         lbxPlayerRight.Items.Add(card.number + $" ,{card.suit}");
-                        lbxCards.Items.Remove(card);
+                        
                     }
-
                 }       
             }
             catch (System.NullReferenceException)
@@ -101,24 +111,9 @@ namespace S1_Card_Game
             ClearFields();
         }
 
-        public void ClearFields()
-        {
-            lbxCards.Items.Clear();
-            lbxPlayerLeft.Items.Clear();
-            lbxPlayerRight.Items.Clear();
-            lbxGame.Items.Clear();
-            lblPlayerRight.Text = "";
-            lblPlayerLeft.Text = "";
-            
-            currentGame.cards.Clear();
-            currentGame.playerLeft.cards.Clear();
-            currentGame.playerRight.cards.Clear();
-
-            currentGame.cards.Clear();
-        }
-
         private void btnPlay_Click(object sender, EventArgs e)
         {
+            //getting just the number of the selected card using substrings
             string lSelected = lbxPlayerLeft.SelectedItem.ToString();
             string lNumber = lSelected.Substring(0, lSelected.IndexOf(' '));
 
@@ -129,6 +124,7 @@ namespace S1_Card_Game
 
             if(rightSelectedItem.Count > 0)
             {
+                //setting the selected card and its number from the substring
                 Card rSelectedCard = new Card(0, "");
                 rSelectedCard.SetNumber(Convert.ToInt32(rNumber));
                 currentGame.playerRight.SetSelectedCard(rSelectedCard);
@@ -143,28 +139,24 @@ namespace S1_Card_Game
                 currentGame.playerLeft.SetSelectedCard(lSelectedCard);
             }
             
-            //this should be a function in the game class, fix it later
-            if(currentGame.playerRight.selectedCard.number > currentGame.playerLeft.selectedCard.number)
+            if(currentGame.Play() == currentGame.playerRight)
             {
-                lbxGame.Items.Add(currentGame.playerRight.name);
+                lbxGame.Items.Add($"The winner is:  {currentGame.playerRight.name}");
                 lbxPlayerLeft.Items.Remove(lSelected);
                 lbxPlayerRight.Items.Remove(rSelected);
             }
-
-            else if(currentGame.playerRight.selectedCard.number < currentGame.playerLeft.selectedCard.number)
+            else if(currentGame.Play() == currentGame.playerLeft)
             {
-                lbxGame.Items.Add(currentGame.playerLeft.name);
+                lbxGame.Items.Add($"The Winner is:  {currentGame.playerLeft.name}");
                 lbxPlayerLeft.Items.Remove(lSelected);
                 lbxPlayerRight.Items.Remove(rSelected);
             }
-
             else
             {
-                lbxGame.Items.Add("Draw");
+                lbxGame.Items.Add("Draw, card numbers were equal");
                 lbxPlayerLeft.Items.Remove(lSelected);
                 lbxPlayerRight.Items.Remove(rSelected);
             }
-            
         }
     }
 }
