@@ -13,10 +13,7 @@ namespace S1_Card_Game
         public Player playerLeft { get; private set; }
         public Player playerRight { get; private set; }
 
-        //default constructor overload is for creating
-        //the objects of the players from the form.
-        //I'm using the player class to modify their
-        //names from the form with a Set function.
+
         public Game()
         {
             
@@ -69,7 +66,6 @@ namespace S1_Card_Game
             {
                 int indexer = randomIndex.Next(cards.Count);
                 playerRight.cards.Add(cards.ElementAt(indexer));
-
                 cards.RemoveAt(indexer);
             }
 
@@ -77,7 +73,6 @@ namespace S1_Card_Game
             {
                 int secondIndexer = randomIndex.Next(cards.Count);
                 playerLeft.cards.Add(cards.ElementAt(secondIndexer));
-                
                 cards.RemoveAt(secondIndexer);
             }
         }

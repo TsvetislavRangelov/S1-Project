@@ -104,6 +104,7 @@ namespace S1_Card_Game
             {
                 MessageBox.Show("Please, create the cards before dealing them.");
             }
+            //1st change after meeting with teacher
             if(currentGame.cards.Count == 0)
             {
                 lbxCards.Items.Clear();
