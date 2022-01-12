@@ -84,7 +84,7 @@ namespace S1_Card_Game
                 }
                 else
                 {
-                    currentGame.DealCards(lbxCards);
+                    currentGame.DealCards();
 
                     foreach (var card in currentGame.playerLeft.cards)
                     {
@@ -104,6 +104,11 @@ namespace S1_Card_Game
             {
                 MessageBox.Show("Please, create the cards before dealing them.");
             }
+            if(currentGame.cards.Count == 0)
+            {
+                lbxCards.Items.Clear();
+            }
+
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -124,6 +129,7 @@ namespace S1_Card_Game
 
             if(rightSelectedItem.Count > 0)
             {
+
                 //setting the selected card and its number from the substring
                 Card rSelectedCard = new Card(0, "");
                 rSelectedCard.SetNumber(Convert.ToInt32(rNumber));

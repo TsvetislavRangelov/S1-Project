@@ -61,7 +61,7 @@ namespace S1_Card_Game
             return this.cards;
         }
 
-        public void DealCards(ListBox lbx)
+        public void DealCards()
         {
             Random randomIndex = new Random();
 
@@ -69,10 +69,7 @@ namespace S1_Card_Game
             {
                 int indexer = randomIndex.Next(cards.Count);
                 playerRight.cards.Add(cards.ElementAt(indexer));
-                //I've set a listbox as a parameter in order to remove the elements
-                //that need to be removed from the function itself, not from
-                //the form control
-                lbx.Items.RemoveAt(indexer);
+
                 cards.RemoveAt(indexer);
             }
 
@@ -80,7 +77,7 @@ namespace S1_Card_Game
             {
                 int secondIndexer = randomIndex.Next(cards.Count);
                 playerLeft.cards.Add(cards.ElementAt(secondIndexer));
-                lbx.Items.RemoveAt(secondIndexer);
+                
                 cards.RemoveAt(secondIndexer);
             }
         }
